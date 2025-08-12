@@ -1,0 +1,15 @@
+# OpenJDK 11をベースイメージとして使用
+FROM openjdk:11-jdk-slim
+
+# 作業ディレクトリを設定
+WORKDIR /app
+
+# ソースコードとsample.stoneをコピー
+COPY src/ /app/src/
+COPY src/chap5/sample.stone /app/
+
+# Javaファイルをコンパイル
+RUN javac -cp /app/src /app/src/chap5/ParserRunner.java
+
+# sample.stoneをパースする
+CMD ["java", "-cp", "/app/src", "chap5.ParserRunner", "sample.stone"]

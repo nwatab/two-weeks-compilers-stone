@@ -28,7 +28,7 @@ public class Lexer {
             return Token.EOF;       
     }
 
-    private Token peek(int i) throws ParseException {
+    public Token peek(int i) throws ParseException {
         if (fillQueue(i)) 
             return queue.get(i);
         else
