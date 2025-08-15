@@ -13,7 +13,7 @@ public class ParserRunner {
         }
         
         Lexer l = new Lexer(new FileReader(filename));
-        BasicParse bp = new BasicParse();
+        BasicParser bp = new BasicParser();
         while (l.peek(0) != Token.EOF) {
             ASTree ast = bp.parse(l);
             System.out.println("=> " + ast.toString());

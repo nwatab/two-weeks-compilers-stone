@@ -4,7 +4,7 @@ import java.util.HashSet;
 import stone.Parser.Operators;
 import stone.ast.*;
 
-public class BasicParse {
+public class BasicParser {
     HashSet<String> reserved = new HashSet<String>();
     Operators operators = new Operators();
     Parser expr0 = rule();
@@ -33,7 +33,7 @@ public class BasicParse {
     Parser program = rule().or(statement, rule(NullStmnt.class))
         .sep(";", Token.EOL);
     
-    public BasicParse() {
+    public BasicParser() {
         reserved.add(";");
         reserved.add("}");
         reserved.add("if");
