@@ -1,4 +1,4 @@
-# Dockerfile for Chapter 6 - Stone Language Interpreter
+# Dockerfile for Chapter 7 - Stone Language with Functions
 FROM openjdk:11-jdk-slim
 
 # Install necessary tools (git, maven, curl)
@@ -26,7 +26,7 @@ RUN git clone https://github.com/chibash/gluonj.git \
 COPY src/ /app/src/
 
 # Compile Stone language source files
-RUN javac -cp .:gluonj.jar:javassist.jar src/stone/*.java src/stone/ast/*.java src/chap6/*.java
+RUN javac -cp .:gluonj.jar:javassist.jar src/stone/*.java src/stone/ast/*.java src/chap6/*.java src/chap7/*.java
 
-# Default command to run the Chapter 6 interpreter
-CMD ["java", "-cp", ".:gluonj.jar:javassist.jar:src", "chap6.Runner", "src/chap6/sample.stone"]
+# Default command to run the Chapter 7 function runner with fib.stone
+CMD ["java", "-cp", ".:gluonj.jar:javassist.jar:src", "chap7.FuncRunner", "src/chap7/fib.stone"]

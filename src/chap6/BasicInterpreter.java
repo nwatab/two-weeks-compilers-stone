@@ -7,10 +7,15 @@ import java.io.IOException;
 
 public class BasicInterpreter {
     public static void main(String[] args) throws ParseException, IOException {
-        run(new BasicParser(), new BasicEnv());
+        if (args.length < 1) {
+            System.err.println("Usage: java BasicInterpreter <source file>");
+            System.exit(1);
+        }
+        String path = args[0];
+        Lexer lexer = new Lexer(new FileReader(path));
+        run(new BasicParser(), new BasicEnv(), lexer);
     }
-    public static void run(BasicParser bp, Environment env) throws ParseException, IOException {
-        Lexer lexer = new Lexer(new FileReader("src/chap6/sample.stone"));
+    public static void run(BasicParser bp, Environment env, Lexer lexer) throws ParseException, IOException {
         while (lexer.peek(0) != Token.EOF) {
             ASTree t = bp.parse(lexer);
             if (!(t instanceof NullStmnt)) {
