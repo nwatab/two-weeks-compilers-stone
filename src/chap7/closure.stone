@@ -1,0 +1,7 @@
+def adder(x) {
+    fun (y) { x + y }
+}
+
+add5 = adder(5)
+result = add5(3)
+result
