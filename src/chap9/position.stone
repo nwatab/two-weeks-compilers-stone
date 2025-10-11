@@ -1,0 +1,21 @@
+class Position {
+    x = y = 0
+    def move (nx, ny) {
+        x = nx; y=ny;
+    }
+}
+p1 = Position.new
+p1.move(3, 4)
+p1.x = 10
+print p1.x + p1.y
+
+class Pos3D extends Position {
+    z = 0
+    def set (nx, ny, nz) {
+        x = nx; y = ny; z = nz;
+    }
+}
+p2 = Pos3D.new
+print p2.x
+p2.set(5, 6, 7)
+print p2.z
