@@ -1,0 +1,31 @@
+# Dockerfile for Chapter 7 - Stone Language with Functions
+FROM openjdk:11-jdk-slim
+
+# Install necessary tools (git, maven, curl)
+RUN apt-get update && apt-get install -y \
+    git \
+    maven \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Download javassist library
+RUN curl -L -o javassist.jar "https://repo1.maven.org/maven2/org/javassist/javassist/3.29.2-GA/javassist-3.29.2-GA.jar"
+
+# Clone and build gluonj from GitHub
+RUN git clone https://github.com/chibash/gluonj.git \
+    && cd gluonj \
+    && mvn clean package -DskipTests \
+    && cp target/gluonj-*.jar /app/gluonj.jar \
+    && cd .. \
+    && rm -rf gluonj
+
+# Copy source code
+COPY src/ /app/src/
+
+# Compile Stone language source files
+RUN javac -cp .:gluonj.jar:javassist.jar src/stone/*.java src/stone/ast/*.java src/chap6/*.java src/chap7/*.java src/chap8/*.java src/chap9/*.java src/chap10/*.java src/chap11/*.java src/chap12/*.java src/chap13/*.java src/chap14/*.java src/chap14/java/*.java
+
+CMD ["java", "-cp", ".:gluonj.jar:javassist.jar:src", "chap14.JavaRunner", "src/chap11/fib.stone"]
