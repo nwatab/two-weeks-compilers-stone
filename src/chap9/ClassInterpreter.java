@@ -11,7 +11,7 @@ import chap8.Natives;
 public class ClassInterpreter extends BasicInterpreter {
     public static void main(String[] args) throws ParseException, IOException {
     if (args.length < 1) {
-        System.err.println("Usage: java NativeInterpreter <source file>");
+        System.err.println("Usage: java ClassInterpreter <source file>");
         System.exit(1);
     }
     String path = args[0];

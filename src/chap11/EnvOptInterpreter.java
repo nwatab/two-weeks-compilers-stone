@@ -16,7 +16,7 @@ import stone.ast.NullStmnt;
 public class EnvOptInterpreter {
     public static void main(String[] args) throws ParseException, FileNotFoundException {
         if (args.length < 1) {
-            System.err.println("Usage: java NativeInterpreter <source file>");
+            System.err.println("Usage: java EnvOptInterpreter <source file>");
             System.exit(1);
         }
         String path = args[0];

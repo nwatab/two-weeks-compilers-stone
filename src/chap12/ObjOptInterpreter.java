@@ -11,7 +11,7 @@ import chap8.Natives;
 public class ObjOptInterpreter extends EnvOptInterpreter {
     public static void main(String[] args) throws ParseException, FileNotFoundException {
         if (args.length < 1) {
-            System.err.println("Usage: java NativeInterpreter <source file>");
+            System.err.println("Usage: java ObjOptInterpreter <source file>");
             System.exit(1);
         }
         String path = args[0];

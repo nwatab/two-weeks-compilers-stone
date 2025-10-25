@@ -17,7 +17,7 @@ public class TypedInterpreter {
     public static void main(String[] args) throws ParseException, FileNotFoundException, TypeException {
         TypeEnv te = new TypeEnv();
         if (args.length < 1) {
-            System.err.println("Usage: java NativeInterpreter <source file>");
+            System.err.println("Usage: java TypedInterpreter <source file>");
             System.exit(1);
         }
         String path = args[0];
